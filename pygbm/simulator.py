@@ -52,18 +52,16 @@ class GBM_simulator(GBM_setup):
         plt.legend()
         plt.show()
     
-    def simulate_compare(self, T, N, seed):
+    def simulate_compare(self, T, N, seed, methods = ["exact_method", "euler_method", "milstein_method"]):
         t_values = np.linspace(0, T, N+1)
         dt = T/N
         rng = np.random.default_rng(seed)
         dB =  rng.normal(0,np.sqrt(dt),size=N)
         B_values = np.cumsum(dB)
-        t_values1, y_values1 = self.exact_method(t_values, B_values)
-        t_values2, y_values2 = self.euler_method(t_values, B_values)
-        t_values3, y_values3 = self.milstein_method(t_values, B_values)
-        plt.plot(t_values1 , y_values1 , label ="Exact")
-        plt.plot(t_values2 , y_values2 , label ="Euler")
-        plt.plot(t_values3 , y_values3 , label ="Milstein")
+        for method in methods:
+            simulation = getattr(self, method)
+            t_values, y_values = simulation(t_values, B_values)
+            plt.plot(t_values , y_values , label = method)
         plt.xlabel("Time")
         plt.ylabel("Y(t)")
         plt.title("Simulated Geometric Brownian Motion Path")
