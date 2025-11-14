@@ -6,4 +6,5 @@ dependencies:
   - numpy
   - scipy
   - matplotlib
+  - jupyter
 prefix: /opt/anaconda3/envs/GBM
