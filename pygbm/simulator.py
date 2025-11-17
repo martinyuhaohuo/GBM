@@ -50,10 +50,10 @@ class GBM_simulator(GBM_setup):
         plt.ylabel("Y(t)")
         plt.title("Simulated Geometric Brownian Motion Path")
         plt.legend()
-        plt.show()
+        # plt.show()
     
     def simulate_compare(self, T, N, seed, methods = ["exact_method", "euler_method", "milstein_method"]):
-        t_values = np.linspace(0, T, N+1)
+        t_values = np.linspace(0, int(T), int(N+1))
         dt = T/N
         rng = np.random.default_rng(seed)
         dB =  rng.normal(0,np.sqrt(dt),size=N)
@@ -66,4 +66,4 @@ class GBM_simulator(GBM_setup):
         plt.ylabel("Y(t)")
         plt.title("Simulated Geometric Brownian Motion Path")
         plt.legend()
-        plt.show()
+        # plt.show()
