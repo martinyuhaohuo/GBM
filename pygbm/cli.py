@@ -4,21 +4,30 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-# simulate the GBM path using specified method
+
 def simulate(y0, mu, sigma, path, T, N, method):
+    """
+    simulate the GBM path using specified method
+    """
     simulator = GBM_simulator(y0, mu, sigma)
     t_values, y_values = simulator.simulate_path(T, N, method)
     simulator.plot_path(t_values, y_values)
     plt.savefig(path+"/path_simulation.png", dpi=300, bbox_inches="tight")
 
-# compare the GBM path simulated using milstein method and the analytic method
+
 def compare(y0, mu, sigma, path, T, N):
+    """
+    compare the GBM path simulated using milstein method and the analytic method
+    """
     simulator = GBM_simulator(y0, mu, sigma)
     simulator.simulate_compare(T, N, 7689, ["exact_method", "euler_method"])
     plt.savefig(path+"/comparision.png", dpi=300, bbox_inches="tight")
 
-# simulate the GBM for a number of times and plot the sample mean
+
 def sample_sim(y0, mu, sigma, path, T, N, sample_num):
+    """
+    simulate the GBM for a number of times and plot the sample mean
+    """
     simulator = GBM_simulator(y0, mu, sigma)
     samples = list()
     for i in range(sample_num):
@@ -35,6 +44,9 @@ def sample_sim(y0, mu, sigma, path, T, N, sample_num):
 
 ##### now we set up the command-line interface
 def main():
+    """
+    Main function for the CLI tool.
+    """
     # build the command-line interface for the package
     parser = argparse.ArgumentParser(description="GBM CLI Tool")
     subparsers = parser.add_subparsers(dest="command")
