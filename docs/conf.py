@@ -7,7 +7,7 @@ nbsphinx_kernel_name = 'python3'
 
 import sphinx_rtd_theme
 
-# make python able to detect the package when read-the-doc build coumentation
+# make python able to detect the package when read-the-doc build documentation
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
