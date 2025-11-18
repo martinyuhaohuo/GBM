@@ -27,7 +27,7 @@ dependencies = [
 ]
 
 [project.urls]
-"Documentation" = "https://your-readthedocs-url-here"
+"Documentation" = "https://pygbm-yh.readthedocs.io/en/latest/"
 "Source" = "https://github.com/martinyuhaohuo/GBM"
 "Issues" = "https://github.com/martinyuhaohuo/GBM/issues"
 
